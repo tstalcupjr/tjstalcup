@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>{% block pagetitle %}{% endblock %}</title>
+	</head>
+	<body>
+	<h2>Welcome, TJStalcup.com</h2>
+		{% for cat in SITE_CATEGORIES %}
+			<a href='/portfolio/{{ cat.slug }}/'>{{ cat }}</a>  |  
+		{% endfor %}
+	{% block pagebody %}{%endblock%}
+	
+	<hr/>
+	<span class="align:center">Copyright &copy; 2011, TJ Stalcup, Inc.</span>
+	</body>
+</html>
