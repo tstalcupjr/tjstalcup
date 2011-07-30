@@ -6,7 +6,8 @@ from portfolio_site.views import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-	('^time/$', current_datetime),
+	(r'^time/$', current_datetime),
+	(r'^time/plus/(\d{1,2})/$', hours_ahead),
     # Examples:
     # url(r'^$', 'portfolio_site.views.home', name='home'),
     # url(r'^portfolio_site/', include('portfolio_site.foo.urls')),
