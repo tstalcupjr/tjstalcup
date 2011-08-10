@@ -2,10 +2,10 @@ from django.contrib import admin
 from portfolio_site.portfolio import models
 
 class PortfolioItemAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('name',)}
 
 class PortfolioClassificationAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('name',)}
 
 class PortfolioCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}

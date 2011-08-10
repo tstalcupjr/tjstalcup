@@ -22,10 +22,15 @@ class PortfolioClassification(models.Model):
     name=models.CharField(max_length=255)
     category=models.ForeignKey(PortfolioCategory)
     description=models.TextField()
-    slug=models.SlugField(max_length=100)
+    slug=models.SlugField(max_length=100,blank=True)
     
     def __str__(self):
         return "%s" % (self.name)
+    
+    def save(self, *pargs, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(PortfolioClassification,self).save(*pargs, **kwargs)
     
 class PortfolioItem(models.Model):
     #use this model for wswa.org, tom's logo, cron job
@@ -33,7 +38,12 @@ class PortfolioItem(models.Model):
     year=models.CharField(max_length=4)
     classification=models.ForeignKey(PortfolioClassification)
     description=models.TextField()
-    slug=models.SlugField(max_length=100)
+    slug=models.SlugField(max_length=100,blank=True)
     
     def __str__(self):
         return "%s" % (self.name)
+    
+    def save(self, *pargs, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(PortfolioItem,self).save(*pargs, **kwargs)
